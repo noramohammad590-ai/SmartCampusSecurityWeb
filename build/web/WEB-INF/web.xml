@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app
+    version="3.1"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://xmlns.jcp.org/xml/ns/javaee
+        http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+
+    <!-- ========================= -->
+    <!-- Hibernate Student Servlet -->
+    <!-- ========================= -->
+
+    <servlet>
+
+        <servlet-name>
+            HibernateStudentServlet
+        </servlet-name>
+
+        <servlet-class>
+            com.smartCompusSecurityWeb.HibernateStudentServlet
+        </servlet-class>
+
+    </servlet>
+
+    <servlet-mapping>
+
+        <servlet-name>
+            HibernateStudentServlet
+        </servlet-name>
+
+        <url-pattern>
+            /hibernateStudent
+        </url-pattern>
+
+    </servlet-mapping>
+
+
+    <!-- ========================= -->
+    <!-- Complaint Servlet -->
+    <!-- ========================= -->
+
+    <servlet>
+
+        <servlet-name>
+            ComplaintServlet
+        </servlet-name>
+
+        <servlet-class>
+            com.smartCompusSecurityWeb.ComplaintServlet
+        </servlet-class>
+
+    </servlet>
+
+    <servlet-mapping>
+
+        <servlet-name>
+            ComplaintServlet
+        </servlet-name>
+
+        <url-pattern>
+            /complaint
+        </url-pattern>
+
+    </servlet-mapping>
+
+
+    <!-- ========================= -->
+    <!-- Visitor Servlet -->
+    <!-- ========================= -->
+
+    <servlet>
+
+        <servlet-name>
+            VisitorServlet
+        </servlet-name>
+
+        <servlet-class>
+            com.smartCompusSecurityWeb.VisitorServlet
+        </servlet-class>
+
+    </servlet>
+
+    <servlet-mapping>
+
+        <servlet-name>
+            VisitorServlet
+        </servlet-name>
+
+        <url-pattern>
+            /visitor
+        </url-pattern>
+
+    </servlet-mapping>
+
+
+    <!-- ========================= -->
+    <!-- User Servlet -->
+    <!-- ========================= -->
+
+    <servlet>
+
+        <servlet-name>
+            UserServlet
+        </servlet-name>
+
+        <servlet-class>
+            com.smartCompusSecurityWeb.UserServlet
+        </servlet-class>
+
+    </servlet>
+
+    <servlet-mapping>
+
+        <servlet-name>
+            UserServlet
+        </servlet-name>
+
+        <url-pattern>
+            /user
+        </url-pattern>
+
+    </servlet-mapping>
+
+
+    <!-- ========================= -->
+    <!-- Authentication Filter -->
+    <!-- ========================= -->
+
+    <filter>
+
+        <filter-name>
+            AuthFilter
+        </filter-name>
+
+        <filter-class>
+            com.smartCompusSecurityWeb.AuthFilter
+        </filter-class>
+
+    </filter>
+
+    <filter-mapping>
+
+        <filter-name>
+            AuthFilter
+        </filter-name>
+
+        <url-pattern>/home.jsp</url-pattern>
+
+    </filter-mapping>
+
+    <filter-mapping>
+
+        <filter-name>
+            AuthFilter
+        </filter-name>
+
+        <url-pattern>/Students.jsp</url-pattern>
+
+    </filter-mapping>
+
+    <filter-mapping>
+
+        <filter-name>
+            AuthFilter
+        </filter-name>
+
+        <url-pattern>/hibernateStudent</url-pattern>
+
+    </filter-mapping>
+
+    <filter-mapping>
+
+        <filter-name>
+            AuthFilter
+        </filter-name>
+
+        <url-pattern>/complaint</url-pattern>
+
+    </filter-mapping>
+
+    <filter-mapping>
+
+        <filter-name>
+            AuthFilter
+        </filter-name>
+
+        <url-pattern>/visitor</url-pattern>
+
+    </filter-mapping>
+
+    <filter-mapping>
+
+        <filter-name>
+            AuthFilter
+        </filter-name>
+
+        <url-pattern>/user</url-pattern>
+
+    </filter-mapping>
+
+</web-app>
