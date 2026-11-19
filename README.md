@@ -42,6 +42,4 @@ Project Structure
 - "nbproject" – NetBeans project configuration
 - "build.xml" – Ant build file
 
-Author
 
-Nora Mohamed Osman
