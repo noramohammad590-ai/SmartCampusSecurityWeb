@@ -1,10 +1,10 @@
-Smart Campus Security Web
+# Smart Campus Security Web
 
-Project Description
+## Project Description
 
 Smart Campus Security Web is a Java web application developed for campus security management.
 
-Technologies Used
+## Technologies Used
 
 - Java
 - Servlet
@@ -17,7 +17,7 @@ Technologies Used
 - Apache Tomcat
 - NetBeans
 
-Main Features
+## Main Features
 
 - User Login and Logout
 - Session Management
@@ -29,17 +29,16 @@ Main Features
 - Spring Dependency Injection
 - Input Validation
 
-Database
+## Database
 
-Database: MySQL
+*Database:* MySQL
 
-Database Name: "smart_campus_security"
+*Database Name:* smart_campus_security
 
-Project Structure
+## Project Structure
 
-- "src" – Java source code
-- "web" – JSP pages and web resources
-- "nbproject" – NetBeans project configuration
-- "build.xml" – Ant build file
-
+- src – Java source code
+- web – JSP pages and web resources
+- nbproject – NetBeans project configuration
+- build.xml – Ant build file
 
