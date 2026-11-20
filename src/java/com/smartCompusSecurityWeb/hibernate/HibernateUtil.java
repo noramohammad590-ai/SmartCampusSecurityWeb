@@ -12,11 +12,47 @@ public class HibernateUtil {
 
         try {
 
-            return new Configuration()
+            String host =
+                    System.getenv("MYSQL_PUBLIC_HOST");
+
+            String port =
+                    System.getenv("MYSQL_PUBLIC_PORT");
+
+            String user =
+                    System.getenv("MYSQLUSER");
+
+            String password =
+                    System.getenv("MYSQLPASSWORD");
+
+            String url =
+                    "jdbc:mysql://"
+                    + host
+                    + ":"
+                    + port
+                    + "/smart_campus_security";
+
+            Configuration configuration =
+                    new Configuration()
                     .configure(
                         "com/smartCompusSecurityWeb/hibernate/hibernate.cfg.xml"
-                    )
-                    .buildSessionFactory();
+                    );
+
+            configuration.setProperty(
+                    "hibernate.connection.url",
+                    url
+            );
+
+            configuration.setProperty(
+                    "hibernate.connection.username",
+                    user
+            );
+
+            configuration.setProperty(
+                    "hibernate.connection.password",
+                    password
+            );
+
+            return configuration.buildSessionFactory();
 
         } catch (Throwable ex) {
 

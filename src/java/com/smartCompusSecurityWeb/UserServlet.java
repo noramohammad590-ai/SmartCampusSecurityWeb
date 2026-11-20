@@ -12,11 +12,22 @@ import javax.servlet.http.HttpServletResponse;
 
 public class UserServlet extends HttpServlet {
 
-    private static final String URL =
-            "jdbc:mysql://localhost:3306/smart_campus_security";
+    // =========================
+    // Railway MySQL Database Connection
+    // =========================
 
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "";
+    private static final String URL =
+            "jdbc:mysql://"
+            + System.getenv("MYSQL_PUBLIC_HOST")
+            + ":"
+            + System.getenv("MYSQL_PUBLIC_PORT")
+            + "/smart_campus_security";
+
+    private static final String DB_USER =
+            System.getenv("MYSQLUSER");
+
+    private static final String DB_PASSWORD =
+            System.getenv("MYSQLPASSWORD");
 
     @Override
     protected void doPost(
@@ -114,10 +125,12 @@ public class UserServlet extends HttpServlet {
 
         try {
 
+            // Load MySQL JDBC Driver
             Class.forName(
                     "com.mysql.cj.jdbc.Driver"
             );
 
+            // Connect to Railway MySQL
             try (
                 Connection con =
                         DriverManager.getConnection(

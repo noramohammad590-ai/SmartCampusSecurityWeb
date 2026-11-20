@@ -15,11 +15,22 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/student")
 public class StudentServlet extends HttpServlet {
 
+    // =========================
+    // Railway MySQL Database Connection
+    // =========================
     private static final String URL =
-            "jdbc:mysql://localhost:3306/smart_campus_security";
+            "jdbc:mysql://"
+            + System.getenv("MYSQL_PUBLIC_HOST")
+            + ":"
+            + System.getenv("MYSQL_PUBLIC_PORT")
+            + "/smart_campus_security";
 
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "";
+    private static final String DB_USER =
+            System.getenv("MYSQLUSER");
+
+    private static final String DB_PASSWORD =
+            System.getenv("MYSQLPASSWORD");
+
 
     // =========================
     // GET REQUEST
@@ -134,6 +145,7 @@ public class StudentServlet extends HttpServlet {
                     "com.mysql.cj.jdbc.Driver"
             );
 
+            // Connect to Railway MySQL
             try (
                 Connection con =
                         DriverManager.getConnection(

@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Nora/Documents/NetBeansProjects/SmartCampusSecurityWeb/src/java/com/smartCompusSecurityWeb/LoginServlet.java</file>
+            <file>file:/C:/Users/Nora/Documents/NetBeansProjects/SmartCampusSecurityWeb/src/java/com/smartCompusSecurityWeb/StudentServlet.java</file>
+            <file>file:/C:/Users/Nora/Documents/NetBeansProjects/SmartCampusSecurityWeb/src/java/com/smartCompusSecurityWeb/UserServlet.java</file>
+            <file>file:/C:/Users/Nora/Documents/NetBeansProjects/SmartCampusSecurityWeb/src/java/com/smartCompusSecurityWeb/ComplaintServlet.java</file>
+            <file>file:/C:/Users/Nora/Documents/NetBeansProjects/SmartCampusSecurityWeb/src/java/com/smartCompusSecurityWeb/VisitorServlet.java</file>
+            <file>file:/C:/Users/Nora/Documents/NetBeansProjects/SmartCampusSecurityWeb/src/java/com/smartCompusSecurityWeb/hibernate/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/Nora/Documents/NetBeansProjects/SmartCampusSecurityWeb/src/java/com/smartcampus/DBconnection.java</file>
+            <file>file:/C:/Users/Nora/Documents/NetBeansProjects/SmartCampusSecurityWeb/web/Login.jsp</file>
+        </group>
     </open-files>
 </project-private>

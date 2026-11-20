@@ -12,11 +12,23 @@ import javax.servlet.http.HttpServletResponse;
 
 public class VisitorServlet extends HttpServlet {
 
-    private static final String URL =
-            "jdbc:mysql://localhost:3306/smart_campus_security";
+    // =========================
+    // Railway MySQL Database Connection
+    // =========================
 
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "";
+    private static final String URL =
+            "jdbc:mysql://"
+            + System.getenv("MYSQL_PUBLIC_HOST")
+            + ":"
+            + System.getenv("MYSQL_PUBLIC_PORT")
+            + "/smart_campus_security";
+
+    private static final String DB_USER =
+            System.getenv("MYSQLUSER");
+
+    private static final String DB_PASSWORD =
+            System.getenv("MYSQLPASSWORD");
+
 
     @Override
     protected void doPost(
@@ -24,12 +36,23 @@ public class VisitorServlet extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
 
-        String name = request.getParameter("name");
-        String purpose = request.getParameter("purpose");
-        String state = request.getParameter("state");
-        String phone = request.getParameter("phone");
+        String name =
+                request.getParameter("name");
 
-        // Validation
+        String purpose =
+                request.getParameter("purpose");
+
+        String state =
+                request.getParameter("state");
+
+        String phone =
+                request.getParameter("phone");
+
+
+        // =========================
+        // VALIDATION
+        // =========================
+
         if (name == null || name.trim().isEmpty()
                 || purpose == null || purpose.trim().isEmpty()
                 || state == null || state.trim().isEmpty()
@@ -47,7 +70,11 @@ public class VisitorServlet extends HttpServlet {
             return;
         }
 
-        // Phone validation
+
+        // =========================
+        // PHONE VALIDATION
+        // =========================
+
         if (!phone.matches("[0-9]{10}")) {
 
             request.setAttribute(
@@ -62,17 +89,26 @@ public class VisitorServlet extends HttpServlet {
             return;
         }
 
+
+        // =========================
+        // INSERT SQL
+        // =========================
+
         String sql =
                 "INSERT INTO visitors "
                 + "(name, purpose, state, phone) "
                 + "VALUES (?, ?, ?, ?)";
 
+
         try {
 
+            // Load MySQL JDBC Driver
             Class.forName(
                     "com.mysql.cj.jdbc.Driver"
             );
 
+
+            // Connect to Railway MySQL
             Connection con =
                     DriverManager.getConnection(
                             URL,
@@ -83,20 +119,44 @@ public class VisitorServlet extends HttpServlet {
             PreparedStatement ps =
                     con.prepareStatement(sql);
 
-            ps.setString(1, name.trim());
-            ps.setString(2, purpose.trim());
-            ps.setString(3, state.trim());
-            ps.setString(4, phone.trim());
 
+            // Set values
+            ps.setString(
+                    1,
+                    name.trim()
+            );
+
+            ps.setString(
+                    2,
+                    purpose.trim()
+            );
+
+            ps.setString(
+                    3,
+                    state.trim()
+            );
+
+            ps.setString(
+                    4,
+                    phone.trim()
+            );
+
+
+            // Execute INSERT
             ps.executeUpdate();
 
+
+            // Close resources
             ps.close();
             con.close();
 
+
+            // Success page
             response.sendRedirect(
                     request.getContextPath()
                     + "/VisitorSuccess.jsp"
             );
+
 
         } catch (Exception e) {
 

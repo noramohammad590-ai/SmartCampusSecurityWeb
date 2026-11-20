@@ -16,12 +16,22 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
 
-    // Database connection
-    private static final String URL =
-            "jdbc:mysql://localhost:3306/smart_campus_security";
+    // ==============================
+    // Railway MySQL Database Connection
+    // ==============================
 
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "";
+    private static final String URL =
+            "jdbc:mysql://"
+            + System.getenv("MYSQL_PUBLIC_HOST")
+            + ":"
+            + System.getenv("MYSQL_PUBLIC_PORT")
+            + "/smart_campus_security";
+
+    private static final String DB_USER =
+            System.getenv("MYSQLUSER");
+
+    private static final String DB_PASSWORD =
+            System.getenv("MYSQLPASSWORD");
 
     @Override
     protected void doPost(
@@ -48,7 +58,7 @@ public class LoginServlet extends HttpServlet {
                     "com.mysql.cj.jdbc.Driver"
             );
 
-            // Connect to database
+            // Connect to Railway MySQL database
             try (
                 Connection con =
                         DriverManager.getConnection(

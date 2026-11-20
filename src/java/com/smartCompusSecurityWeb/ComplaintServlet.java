@@ -12,11 +12,23 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ComplaintServlet extends HttpServlet {
 
-    private static final String URL =
-            "jdbc:mysql://localhost:3306/smart_campus_security";
+    // =========================
+    // Railway MySQL Database Connection
+    // =========================
 
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "";
+    private static final String URL =
+            "jdbc:mysql://"
+            + System.getenv("MYSQL_PUBLIC_HOST")
+            + ":"
+            + System.getenv("MYSQL_PUBLIC_PORT")
+            + "/smart_campus_security";
+
+    private static final String DB_USER =
+            System.getenv("MYSQLUSER");
+
+    private static final String DB_PASSWORD =
+            System.getenv("MYSQLPASSWORD");
+
 
     @Override
     protected void doPost(
@@ -34,7 +46,9 @@ public class ComplaintServlet extends HttpServlet {
                 request.getParameter("status");
 
 
-        // Validation
+        // =========================
+        // VALIDATION
+        // =========================
 
         if (subject == null
                 || subject.trim().isEmpty()) {
@@ -84,6 +98,10 @@ public class ComplaintServlet extends HttpServlet {
         }
 
 
+        // =========================
+        // INSERT SQL
+        // =========================
+
         String sql =
                 "INSERT INTO complaints "
                 + "(subject, description, status) "
@@ -92,11 +110,13 @@ public class ComplaintServlet extends HttpServlet {
 
         try {
 
+            // Load MySQL JDBC Driver
             Class.forName(
                     "com.mysql.cj.jdbc.Driver"
             );
 
 
+            // Connect to Railway MySQL
             try (
                 Connection con =
                         DriverManager.getConnection(
@@ -128,6 +148,7 @@ public class ComplaintServlet extends HttpServlet {
                 ps.executeUpdate();
 
 
+                // Success page
                 response.sendRedirect(
                         request.getContextPath()
                         + "/ComplaintSuccess.jsp"

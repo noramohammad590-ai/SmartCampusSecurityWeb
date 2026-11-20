@@ -6,11 +6,22 @@ import java.sql.SQLException;
 
 public class DBconnection {
 
-    private static final String URL =
-            "jdbc:mysql://localhost:3306/smart_campus_security";
+    // =========================
+    // Railway MySQL Connection
+    // =========================
 
-    private static final String USER = "root";
-    private static final String PASSWORD = "";
+    private static final String URL =
+            "jdbc:mysql://"
+            + System.getenv("MYSQL_PUBLIC_HOST")
+            + ":"
+            + System.getenv("MYSQL_PUBLIC_PORT")
+            + "/smart_campus_security";
+
+    private static final String USER =
+            System.getenv("MYSQLUSER");
+
+    private static final String PASSWORD =
+            System.getenv("MYSQLPASSWORD");
 
     public static Connection getConnection()
             throws SQLException {
